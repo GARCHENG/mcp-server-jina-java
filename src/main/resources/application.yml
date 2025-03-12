@@ -3,7 +3,7 @@ jina:
     api-key: your-api-key
 spring:
   application:
-    name: mcp-server-weather
+    name: mcp-server-jina-java
   ai:
     mcp:
       server:

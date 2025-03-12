@@ -1,5 +1,8 @@
 package cn.garcheng.mcp.service;
 
+import cn.garcheng.mcp.dto.JinaReadAndFetchContentResponse;
+import retrofit2.http.*;
+
 /**
  * @ClassDescription:
  * @Author: GARCHENG
@@ -7,6 +10,41 @@ package cn.garcheng.mcp.service;
  */
 public interface IJinaSearchApi {
 
+    /**
+     * e.g. curl <a href="https://r.jina.ai/https://example.com">...</a> \
+     * -H "Accept: application/json" \
+     * -H "Authorization: Bearer jina_7c2096090ce14586ab4193e376588eeat9lPKEeomlMin_lONzpwnPsUHf7d"
+     *
+     * @param url   url
+     * @param token token
+     * @return result
+     */
+    @Headers({
+            "Content-Type: application/json",
+            "Authorization: Bearer YOUR_TOKEN"
+    })
+    @GET("https://r.jina.ai/{url}")
+    JinaReadAndFetchContentResponse readAndFetchContent(@Path("url") String url, @Header("Authorization") String token);
 
+    /**
+     * e.g. curl <a href="https://s.jina.ai/?q=Jina+AI&num=10&page=1">...</a> \
+     * -H "Accept: application/json" \
+     * -H "Authorization: Bearer jina_7c2096090ce14586ab4193e376588eeat9lPKEeomlMin_lONzpwnPsUHf7d" \
+     * -H "X-Respond-With: no-content"
+     *
+     * @param question q
+     * @param num      num
+     * @param page     page
+     * @return
+     */
+    @Headers({
+            "Content-Type: application/json",
+            "Authorization: Bearer YOUR_TOKEN",
+            "X-Respond-With: no-content"
+    })
+    @GET("https://s.jina.ai")
+    String searchAndGetSERP(@Query("q") String question,
+                            @Query("num") Integer num,
+                            @Query("page") Integer page);
 
 }
