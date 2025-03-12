@@ -1,15 +1,13 @@
 package cn.garcheng.mcp.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -20,7 +18,8 @@ public class JinaSearchAndGetSERPResponse {
     private List<Data> data;
     private Meta meta;
 
-    @lombok.Data
+    @Getter
+    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
@@ -31,7 +30,8 @@ public class JinaSearchAndGetSERPResponse {
 
     }
 
-    @lombok.Data
+    @Getter
+    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
@@ -40,7 +40,8 @@ public class JinaSearchAndGetSERPResponse {
 
     }
 
-    @lombok.Data
+    @Getter
+    @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder

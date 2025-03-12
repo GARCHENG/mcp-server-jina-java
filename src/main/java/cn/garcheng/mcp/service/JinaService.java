@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JinaService {
 
-    @Value("${jina.api.api-key}")
-    private String jinaApiKey;
+
 
 
 

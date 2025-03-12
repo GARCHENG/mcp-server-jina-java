@@ -1,6 +1,6 @@
 jina:
   api:
-    api-key: your-api-key
+    api-key: jina_7c2096090ce14586ab4193e376588eeat9lPKEeomlMin_lONzpwnPsUHf7d
 spring:
   application:
     name: mcp-server-jina-java

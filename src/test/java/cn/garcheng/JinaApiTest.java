@@ -12,6 +12,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import retrofit2.Call;
+import retrofit2.Response;
+
+import java.io.IOException;
 
 /**
  * @ClassDescription:
@@ -25,21 +28,22 @@ import retrofit2.Call;
 @SpringBootTest(classes = McpServerJinaApp.class)
 public class JinaApiTest {
 
-    public static final String JINA_TOKEN = "Bearer jina_7c2096090ce14586ab4193e376588eeat9lPKEeomlMin_lONzpwnPsUHf7d";
 
     @Resource
     private IJinaSearchApi jinaSearchApi;
 
     @Test
-    public void test_readAndFetchContent() {
-        Call<JinaReadAndFetchContentResponse> response = jinaSearchApi.readAndFetchContent("https://modelcontextprotocol.io/quickstart/server", JINA_TOKEN);
-        log.info("测试结果：response:{}", JSON.toJSONString(response));
+    public void test_readAndFetchCo() throws IOException {
+        Call<JinaReadAndFetchContentResponse> call = jinaSearchApi.readAndFetchContent("https://modelcontextprotocol.io/quickstart/server");
+        Response<JinaReadAndFetchContentResponse> response = call.execute();
+        log.info("测试结果：response:{}", response.isSuccessful() ? JSON.toJSONString(response.body()) : "execute fail!");
     }
 
     @Test
-    public void test_searchAndGetSERP() {
-        Call<JinaSearchAndGetSERPResponse> response = jinaSearchApi.searchAndGetSERP("mcp", 10, 1, JINA_TOKEN);
-        log.info("测试结果：response:{}", JSON.toJSONString(response));
+    public void test_searchAndGetSERP() throws IOException {
+        Call<JinaSearchAndGetSERPResponse> call = jinaSearchApi.searchAndGetSERP("mcp", 10, 1);
+        Response<JinaSearchAndGetSERPResponse> response = call.execute();
+        log.info("测试结果：response:{}", response.isSuccessful() ? JSON.toJSONString(response.body()) : "execute fail!");
     }
 
 }
