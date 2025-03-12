@@ -1,6 +1,8 @@
 package cn.garcheng.mcp.service;
 
 import cn.garcheng.mcp.dto.JinaReadAndFetchContentResponse;
+import cn.garcheng.mcp.dto.JinaSearchAndGetSERPResponse;
+import retrofit2.Call;
 import retrofit2.http.*;
 
 /**
@@ -24,7 +26,7 @@ public interface IJinaSearchApi {
             "Authorization: Bearer YOUR_TOKEN"
     })
     @GET("https://r.jina.ai/{url}")
-    JinaReadAndFetchContentResponse readAndFetchContent(@Path("url") String url, @Header("Authorization") String token);
+    Call<JinaReadAndFetchContentResponse> readAndFetchContent(@Path("url") String url, @Header("Authorization") String token);
 
     /**
      * e.g. curl <a href="https://s.jina.ai/?q=Jina+AI&num=10&page=1">...</a> \
@@ -43,8 +45,9 @@ public interface IJinaSearchApi {
             "X-Respond-With: no-content"
     })
     @GET("https://s.jina.ai")
-    String searchAndGetSERP(@Query("q") String question,
-                            @Query("num") Integer num,
-                            @Query("page") Integer page);
+    Call<JinaSearchAndGetSERPResponse> searchAndGetSERP(@Query("q") String question,
+                                                       @Query("num") Integer num,
+                                                       @Query("page") Integer page,
+                                                       @Header("Authorization") String token);
 
 }

@@ -17,7 +17,9 @@ public class Retrofit2Config {
 
     @Bean
     public IJinaSearchApi jinaSearchApi() {
+
         Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://r.jina.ai")
                 .addConverterFactory(GsonConverterFactory.create()).build();
         return retrofit.create(IJinaSearchApi.class);
 

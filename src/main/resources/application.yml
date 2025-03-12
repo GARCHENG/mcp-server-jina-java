@@ -10,15 +10,15 @@ spring:
         name: ${spring.application.name}
         version: 0.0.1
 
-  main:
-    banner-mode: off
-    web-application-type: none
+#  main:
+#    banner-mode: off
+#    web-application-type: none
 
-logging:
-  pattern:
-    console:
-  file:
-    name: D://${spring.application.name}.log
+#logging:
+#  pattern:
+#    console:
+#  file:
+#    name: D://${spring.application.name}.log
 server:
   servlet:
     encoding:
