@@ -3,7 +3,7 @@ package cn.garcheng;
 import cn.garcheng.mcp.McpServerJinaApp;
 import cn.garcheng.mcp.dto.JinaReadAndFetchContentResponse;
 import cn.garcheng.mcp.dto.JinaSearchAndGetSERPResponse;
-import cn.garcheng.mcp.service.IJinaSearchApi;
+import cn.garcheng.mcp.service.IJinaReaderApi;
 import com.alibaba.fastjson2.JSON;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ public class JinaApiTest {
 
 
     @Resource
-    private IJinaSearchApi jinaSearchApi;
+    private IJinaReaderApi jinaSearchApi;
 
     @Test
     public void test_readAndFetchCo() throws IOException {

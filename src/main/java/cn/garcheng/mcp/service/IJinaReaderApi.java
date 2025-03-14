@@ -10,7 +10,7 @@ import retrofit2.http.*;
  * @Author: GARCHENG
  * @Created: 2025/3/12 16:38
  */
-public interface IJinaSearchApi {
+public interface IJinaReaderApi {
 
     /**
      * e.g. curl <a href="https://r.jina.ai/https://example.com">...</a> \

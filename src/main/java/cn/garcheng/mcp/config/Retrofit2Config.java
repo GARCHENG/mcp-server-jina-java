@@ -1,6 +1,6 @@
 package cn.garcheng.mcp.config;
 
-import cn.garcheng.mcp.service.IJinaSearchApi;
+import cn.garcheng.mcp.service.IJinaReaderApi;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -24,7 +24,7 @@ public class Retrofit2Config {
     private String jinaApiKey;
 
     @Bean
-    public IJinaSearchApi jinaSearchApi() {
+    public IJinaReaderApi jinaSearchApi() {
 
         // 创建日志拦截器
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -41,7 +41,7 @@ public class Retrofit2Config {
 
         // 创建OkHttpClient并添加日志拦截器
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
+//                .addInterceptor(loggingInterceptor)
                 .addInterceptor(headerInterceptor)
                 .build();
 
@@ -49,7 +49,7 @@ public class Retrofit2Config {
                 .baseUrl("https://r.jina.ai")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
-        return retrofit.create(IJinaSearchApi.class);
+        return retrofit.create(IJinaReaderApi.class);
 
     }
 
