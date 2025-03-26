@@ -1,6 +1,7 @@
 package cn.garcheng.mcp;
 
 import cn.garcheng.mcp.service.JinaService;
+import cn.garcheng.mcp.service.SamplingTestService;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +22,9 @@ public class McpServerJinaApp {
     }
 
     @Bean
-    public ToolCallbackProvider jinaSearchTools(JinaService jinaService) {
-        return MethodToolCallbackProvider.builder().toolObjects(jinaService).build();
+    public ToolCallbackProvider mcpTools(JinaService jinaService, SamplingTestService samplingTestService) {
+        return MethodToolCallbackProvider.builder()
+                .toolObjects(jinaService, samplingTestService)
+                .build();
     }
 }

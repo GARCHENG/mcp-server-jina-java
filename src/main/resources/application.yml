@@ -9,14 +9,15 @@ spring:
       server:
         name: ${spring.application.name}
         version: 0.0.1
+        type: SYNC
 
   main:
     banner-mode: off
     web-application-type: none
 
-#logging:
-#  pattern:
-#    console:
+logging:
+  pattern:
+    console:
   file:
     name: D://${spring.application.name}.log
 server:
