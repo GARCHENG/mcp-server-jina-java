@@ -1,14 +1,12 @@
 package cn.garcheng.mcp.service;
 
 import com.alibaba.fastjson2.JSON;
-import io.modelcontextprotocol.server.McpSyncServer;
 import io.modelcontextprotocol.server.McpSyncServerExchange;
 import io.modelcontextprotocol.spec.McpSchema;
-import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ToolContext;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +17,10 @@ import java.util.List;
  * @Created: 2025/3/18 15:20
  */
 
+@Slf4j
 @Service
 public class SamplingTestService {
 
-    @Resource
-    @Lazy
-    private McpSyncServer mcpSyncServer;
 
 
     @Tool(name = "Samples from an LLM using MCP's sampling feature")
@@ -45,6 +41,7 @@ public class SamplingTestService {
 
 
         McpSchema.CreateMessageResult samplingResult = exchange.createMessage(opeAiLlmMessageRequest);
+        log.info(JSON.toJSONString(samplingResult));
         return JSON.toJSONString(samplingResult);
     }
 
